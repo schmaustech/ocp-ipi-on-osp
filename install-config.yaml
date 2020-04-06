@@ -20,13 +20,13 @@ platform:
     apiVIP: 10.20.0.102
     ingressVIP: 10.20.0.100
     dnsVIP: 10.20.0.101
-    bootstrapOSImage: http://10.20.0.5/images/rhcos-43.81.202003111353.0-qemu.x86_64.qcow2.gz?sha256=b1acda1e55a9e3829db35c38ab0e6b14c2741ecbe63d69281db52ffde8f9e99d
-    clusterOSImage: http://10.20.0.5/images/rhcos-43.81.202003111353.0-openstack.x86_64.qcow2.gz?sha256=8f17baa5564450eea4d3b6f817df3df58af7c3294583be62de615663c0ec55a5
+    bootstrapOSImage: http://10.20.0.5/images/RHCOS_QEMU_IMAGE
+    clusterOSImage: http://10.20.0.5/images/RHCOS_OPENSTACK_IMAGE
     hosts:
       - name: master-0
         role: master
         bmc:
-          address: ipmi://10.20.0.3:6202
+          address: ipmi://10.20.0.3:MASTER0BMC
           username: admin
           password: redhat
         bootMACAddress: fa:16:3e:77:fe:da
@@ -34,7 +34,7 @@ platform:
       - name: master-1
         role: master
         bmc:
-          address: ipmi://10.20.0.3:6205
+          address: ipmi://10.20.0.3:MASTER1BMC
           username: admin
           password: redhat
         bootMACAddress: fa:16:3e:2b:2c:af
@@ -42,7 +42,7 @@ platform:
       - name: master-2
         role: master
         bmc:
-          address: ipmi://10.20.0.3:6200
+          address: ipmi://10.20.0.3:MASTER2BMC
           username: admin
           password: redhat
         bootMACAddress: fa:16:3e:82:67:35
@@ -50,7 +50,7 @@ platform:
       - name: worker-0
         role: worker
         bmc:
-          address: ipmi://10.20.0.3:6204
+          address: ipmi://10.20.0.3:WORKER0BMC
           username: admin
           password: redhat
         bootMACAddress: fa:16:3e:07:a2:cf
@@ -58,7 +58,7 @@ platform:
       - name: worker-1
         role: worker
         bmc:
-          address: ipmi://10.20.0.3:6203
+          address: ipmi://10.20.0.3:WORKER1BMC
           username: admin
           password: redhat
         bootMACAddress: fa:16:3e:f0:73:0e
