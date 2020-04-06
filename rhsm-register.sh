@@ -5,5 +5,5 @@ sudo subscription-manager attach --pool=<pool id here>
 sudo subscription-manager repos --disable=*
 sudo subscription-manager repos --enable=rhel-8-for-x86_64-baseos-rpms --enable=rhel-8-for-x86_64-appstream-rpms --enable=ansible-2-for-rhel-8-x86_64-rpms
 sudo subscription-manager repos --enable=openstack-15-tools-for-rhel-8-x86_64-rpms --enable=openstack-15-for-rhel-8-x86_64-rpms
-sudo yum -y install ipmitool libvirt jq libguestfs virt* qemu* bind-utils bind dhcp-server
+sudo yum -y install ipmitool libvirt jq libguestfs virt* qemu* bind-utils bind dhcp-server python3-openstackclient
 sudo yum -y upgrade
