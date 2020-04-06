@@ -17,9 +17,10 @@ rm -r -f `pwd`/.kube
 rm -r -f `pwd`/.cache
 rm -r -f `pwd`/ocp
 echo "cleanup-refresh : Turning off nodes..."
-/usr/bin/ipmitool -I lanplus -H10.20.0.22 -p6200 -Uadmin -Predhat chassis power off
-/usr/bin/ipmitool -I lanplus -H10.20.0.22 -p6205 -Uadmin -Predhat chassis power off
-/usr/bin/ipmitool -I lanplus -H10.20.0.22 -p6204 -Uadmin -Predhat chassis power off
-/usr/bin/ipmitool -I lanplus -H10.20.0.22 -p6203 -Uadmin -Predhat chassis power off
-/usr/bin/ipmitool -I lanplus -H10.20.0.22 -p6202 -Uadmin -Predhat chassis power off
+/usr/bin/ipmitool -I lanplus -H10.20.0.3 -p6200 -Uadmin -Predhat chassis power off
+/usr/bin/ipmitool -I lanplus -H10.20.0.3 -p6201 -Uadmin -Predhat chassis power off
+/usr/bin/ipmitool -I lanplus -H10.20.0.3 -p6202 -Uadmin -Predhat chassis power off
+/usr/bin/ipmitool -I lanplus -H10.20.0.3 -p6203 -Uadmin -Predhat chassis power off
+/usr/bin/ipmitool -I lanplus -H10.20.0.3 -p6204 -Uadmin -Predhat chassis power off
+/usr/bin/ipmitool -I lanplus -H10.20.0.3 -p6205 -Uadmin -Predhat chassis power off
 echo "cleanup-refresh : Completed cleanup!"
