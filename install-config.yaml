@@ -17,56 +17,54 @@ platform:
   baremetal:
     provisioningNetworkCIDR: 172.22.0.0/24
     provisioningNetworkInterface: eth1
-    apiVIP: 10.20.0.102
-    ingressVIP: 10.20.0.100
-    dnsVIP: 10.20.0.101
+    apiVIP: 10.20.0.110
+    ingressVIP: 10.20.0.112
+    dnsVIP: 10.20.0.111
     bootstrapOSImage: http://10.20.0.5/images/RHCOS_QEMU_IMAGE
     clusterOSImage: http://10.20.0.5/images/RHCOS_OPENSTACK_IMAGE
     hosts:
       - name: master-0
         role: master
         bmc:
-          address: ipmi://10.20.0.3:MASTER0BMC
+          address: ipmi://10.20.0.3:master0BMC
           username: admin
           password: redhat
-        bootMACAddress: fa:16:3e:77:fe:da
+        bootMACAddress: de:ad:be:ef:00:40
         hardwareProfile: default
       - name: master-1
         role: master
         bmc:
-          address: ipmi://10.20.0.3:MASTER1BMC
+          address: ipmi://10.20.0.3:master1BMC
           username: admin
           password: redhat
-        bootMACAddress: fa:16:3e:2b:2c:af
+        bootMACAddress: de:ad:be:ef:00:41
         hardwareProfile: default
       - name: master-2
         role: master
         bmc:
-          address: ipmi://10.20.0.3:MASTER2BMC
+          address: ipmi://10.20.0.3:master2BMC
           username: admin
           password: redhat
-        bootMACAddress: fa:16:3e:82:67:35
+        bootMACAddress: de:ad:be:ef:00:42
         hardwareProfile: default
       - name: worker-0
         role: worker
         bmc:
-          address: ipmi://10.20.0.3:WORKER0BMC
+          address: ipmi://10.20.0.3:worker0BMC
           username: admin
           password: redhat
-        bootMACAddress: fa:16:3e:07:a2:cf
+        bootMACAddress: de:ad:be:ef:00:50
         hardwareProfile: unknown
       - name: worker-1
         role: worker
         bmc:
-          address: ipmi://10.20.0.3:WORKER1BMC
+          address: ipmi://10.20.0.3:worker1BMC
           username: admin
           password: redhat
-        bootMACAddress: fa:16:3e:f0:73:0e
+        bootMACAddress: de:ad:be:ef:00:51
         hardwareProfile: unknown
 
-sshKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC1DEDEzcW/qKqPzsCCqmXxyD3XxMDyiAKsfsb7ltmPOERrrEwB04+jKgkNtFvyAwrklcU9NRBW72OBZelpXvv32UKEl/1G4c3mxYtGKzifISWTb6XXYt3Gt8U1/rv6ABOb/0/tu2BLUP3YhPL648vTJwXJM/bDaPNyDd
-SEZsJntYSDJza4a1o76c/oUpDxWwdcAz1c4BzxAy9n7idHO+4CloWz67yE5rfV8CmCXrFRK1m0n+ZpOVuQJH/t+6K2OeZo3WFHcgqF0Ia7HnIKel/c2ii5NvYwNOK6QpoeHl4yc/KNBqlCVCSG4csiqafKa2iufso7VB4iTEB/NbtaWpqXdpC9FuH8j+90AZevuZnl03kKgukVSv0Xm
-HpdQxumSlWXN/RscNyTK8HqFAGrKqr20osTnQYbGMWsuH5wZVXNTZEbxpzcnX2QU5RDFOBXrOjfMqKuf72SOwVI6JjVwZTLmqcH2pucOBZjnhqsMQHDyvPFUrsl6vhRgJfR3VTcAfM= cloud-user@provision'
+sshKey: 'SSH_KEY'
 imageContentSources:
 - mirrors:
   - provision.schmaustech.com:5000/ocp4/openshift4
@@ -82,38 +80,3 @@ pullSecret: '{
     }
   }
 }'
-additionalTrustBundle: |
-  -----BEGIN CERTIFICATE-----
-  MIIF5TCCA82gAwIBAgIURVuNZ5vKJIRHyINaHCQRN/wwLhMwDQYJKoZIhvcNAQEL
-  BQAwgYExCzAJBgNVBAYTAlVTMRYwFAYDVQQIDA1Ob3J0aENhcm9saW5hMRAwDgYD
-  VQQHDAdSYWxlaWdoMRAwDgYDVQQKDAdSZWQgSGF0MRIwEAYDVQQLDAlNYXJrZXRp
-  bmcxIjAgBgNVBAMMGXByb3Zpc2lvbi5zY2htYXVzdGVjaC5jb20wHhcNMjAwNDAx
-  MjA1MTUwWhcNMjEwNDAxMjA1MTUwWjCBgTELMAkGA1UEBhMCVVMxFjAUBgNVBAgM
-  DU5vcnRoQ2Fyb2xpbmExEDAOBgNVBAcMB1JhbGVpZ2gxEDAOBgNVBAoMB1JlZCBI
-  YXQxEjAQBgNVBAsMCU1hcmtldGluZzEiMCAGA1UEAwwZcHJvdmlzaW9uLnNjaG1h
-  dXN0ZWNoLmNvbTCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAOsZDyki
-  6ChtF80blAiSsjDxhBCFCnL9axbMHMPWh4dHaog2+pjlT4iQP48a36QD3uET/gvT
-  l6XDSFixyXuDBqbXivyHSeX6mvBcjT7tNF3wJU2EdraL9a2XHA3i/n01sXQutUdv
-  jiJN+eS5X3kcYYRrW/rm0jv8h45/Nw2KpG9WwrxPptmtJYU8IYyWfS9ZZI6Z94xH
-  HjiulMcgSM3kFuY631D23JWKlfkSANhXJCZXbW8kPcvrjRtfdLe2k4CyktmCHIuS
-  uJptQIWOCTov8assJf/FuGmcm8gJHJ1e+/tXS1vMvGhl3HPqj9Om0TTdxiTPJcQH
-  hii3pgEeKj9UtoEXFjuFU4vPmrh98WcFVBgmMhMLPkK5vLs7VvYApLP6D/8nmemp
-  bCBo531OlLcQLsa4676FLPXb1qPmlAiJFlR9mkzYs2n7YInGcpHUIhcqbhFbgZFi
-  fD/zloxJw6F7FEeyxMKpJZoErxko0tFFvgZAGVxu6n2ELiUerklncf/vi0Gz/0vk
-  H4ewIfqrWzZVsG42QrOQTiw6lmdxmsBbo3rukUjx1Rl4FLjWab0KH11dJrSAitnZ
-  ntdeaL/sxWQsTa8htmgDLdakwwzlzL44MgnIFy1Stq/omY2Y5D+YL6wtDYS3zC6r
-  caGO5oiNrRZtjf5HBXRaecCk2cmpC7L2cCnFAgMBAAGjUzBRMB0GA1UdDgQWBBRa
-  IeI8L+sjMAxLaeAO6zRL0yRxkTAfBgNVHSMEGDAWgBRaIeI8L+sjMAxLaeAO6zRL
-  0yRxkTAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4ICAQAUdZ0Ko02h
-  uR6KlmJwa/BClkKDuXby738d5yNeB0IBIkkrM50DB98iY+QATFe4PayB91LSbXV4
-  By4Riv3sgXfvtyWL0oKkgr9WO2d1LWf68S28iKl4T5bYqlfb2EFSEOAyx/nz/8DP
-  e3h2w+m0/o5WaeUbcyHD0zbhWrWg/uetoN2WdZHlyoQ+k6RCDjE0glF0nALJiOu8
-  sHR/kvydCV1lU41+1RROnfrtTylbHLmGsvh4ks0O27Qn9wT4F012PY5/Sh4Ch/vn
-  jXl0VB4+itOXK4z1N63MvlFZ15VxrxvL/TIwzSWUf8dbjGScDz3ON/9RUWxicC8G
-  7+UsHX/rGMAXPCI7ni8SpAdqMcLEjLJhFtnT4LXD1Z8KRPTU6rMPD6XFMPFOsx1F
-  BrSOKrfYELP0GwkpUC5KL8DVynzK2EEnC229cDY5DOPitc6YeS6EEqN86eD7pWHE
-  Caf5nJZ5QiJ8xOpvj+sUJZmUXyL2FhwZIeszkDx6nj8ohJ+IEbCCghQQgev8kXRl
-  QhNaCUDlCwstADzZxJMCfKGYv//+Pav0fJXETpA9KPkQ1e8456nYT/dZu+T9F0O0
-  jj4PEtS9UKbCwZ0q3h1J0Z37I1o1OgLOL0+SRH7yusnqMeD9QK+9RHQVhzPR4imY
-  oGesvJQ0hWU75SvP/dgFP1bhsHXkNBsTLg==
-  -----END CERTIFICATE-----
