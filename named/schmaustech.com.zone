@@ -8,17 +8,17 @@ $TTL 1D
 
 $ORIGIN         schmaustech.com.
 schmaustech.com.            IN      NS      dns.schmaustech.com.
-dns                     IN      A       10.20.0.11
+dns                     IN      A       10.20.0.5
 
-*.apps.kni1		IN	A	10.20.0.100
-ns1.kni1		IN	A	10.20.0.101
-api.kni1		IN	A	10.20.0.102
-api-int.kni1		IN	A	10.20.0.102	
+*.apps.kni1		IN	A	10.20.0.112
+ns1.kni1		IN	A	10.20.0.111
+api.kni1		IN	A	10.20.0.110
+api-int.kni1		IN	A	10.20.0.110	
 
-master-0.kni1	IN	A	10.20.0.13
-master-1.kni1	IN	A	10.20.0.32
-master-2.kni1	IN	A	10.20.0.23
-worker-0.kni1	IN	A	10.20.0.20
-worker-1.kni1	IN	A	10.20.0.12
-worker-2.kni1	IN	A	10.20.0.25
-provision	IN	A	10.20.0.11
+master-0.kni1	IN	A	10.20.0.100
+master-1.kni1	IN	A	10.20.0.101
+master-2.kni1	IN	A	10.20.0.102
+worker-0.kni1	IN	A	10.20.0.200
+worker-1.kni1	IN	A	10.20.0.201
+worker-2.kni1	IN	A	10.20.0.202
+provision	IN	A	10.20.0.5
