@@ -15,8 +15,7 @@ oc adm release extract --registry-config "${PULLSECRET}" --command=$CMD --to "${
 
 sudo yum -y install podman httpd httpd-tools
 sudo mkdir -p /opt/registry/{auth,certs,data}
-sudo openssl req -newkey rsa:4096 -nodes -sha256 -keyout /opt/registry/certs/domain.key -x509 -days 365 -out /opt/registry/certs/domain.crt -subj "/C=US/ST=NorthCarolina/L=Raleigh/O=Red Hat/OU=Marketing/CN=provi
-sion.schmaustech.com"
+sudo openssl req -newkey rsa:4096 -nodes -sha256 -keyout /opt/registry/certs/domain.key -x509 -days 365 -out /opt/registry/certs/domain.crt -subj "/C=US/ST=NorthCarolina/L=Raleigh/O=Red Hat/OU=Marketing/CN=provision.schmaustech.com"
 sudo cp /opt/registry/certs/domain.crt /home/cloud-user/domain.crt
 sudo chown cloud-user:cloud-user /home/cloud-user/domain.crt
 sudo cp /opt/registry/certs/domain.crt /etc/pki/ca-trust/source/anchors/
@@ -24,9 +23,7 @@ sudo update-ca-trust extract
 
 sudo htpasswd -bBc /opt/registry/auth/htpasswd dummy dummy
 
-sudo podman create --name poc-registry --net host -p 5000:5000 -v /opt/registry/data:/var/lib/registry:z -v /opt/registry/auth:/auth:z -e "REGISTRY_AUTH=htpasswd" -e "REGISTRY_AUTH_HTPASSWD_REALM=Registry" -e "R
-EGISTRY_HTTP_SECRET=ALongRandomSecretForRegistry" -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd -v /opt/registry/certs:/certs:z -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt -e REGISTRY_HTTP_TLS_KEY=/certs/
-domain.key docker.io/library/registry:2
+sudo podman create --name poc-registry --net host -p 5000:5000 -v /opt/registry/data:/var/lib/registry:z -v /opt/registry/auth:/auth:z -e "REGISTRY_AUTH=htpasswd" -e "REGISTRY_AUTH_HTPASSWD_REALM=Registry" -e "REGISTRY_HTTP_SECRET=ALongRandomSecretForRegistry" -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd -v /opt/registry/certs:/certs:z -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt -e REGISTRY_HTTP_TLS_KEY=/certs/domain.key docker.io/library/registry:2
 
 sudo podman start poc-registry
 sudo podman ps
