@@ -8,14 +8,14 @@ $TTL 1D
 
 @       IN      NS      dns.schmaustech.com.
 schmaustech.com.    IN      NS      dns.schmaustech.com.
-11		IN	PTR	dns.schmaustech.com.
+5 		IN	PTR	dns.schmaustech.com.
 
-101		IN	PTR	ns1.kni1.schmaustech.com.
-102		IN	PTR	api.kni1.schmaustech.com.
+110		IN	PTR	ns1.kni1.schmaustech.com.
+111		IN	PTR	api.kni1.schmaustech.com.
 
-13		IN	PTR	master-0.kni1.schmaustech.com.
-32		IN	PTR	master-1.kni1.schmaustech.com.
-23		IN	PTR	master-2.kni1.schmaustech.com.
-20		IN	PTR	worker-0.kni1.schmaustech.com.
-12		IN	PTR	worker-1.kni1.schmaustech.com.
-25		IN	PTR	worker-2.kni1.schmaustech.com.
+100		IN	PTR	master-0.kni1.schmaustech.com.
+101		IN	PTR	master-1.kni1.schmaustech.com.
+102		IN	PTR	master-2.kni1.schmaustech.com.
+200		IN	PTR	worker-0.kni1.schmaustech.com.
+201		IN	PTR	worker-1.kni1.schmaustech.com.
+202		IN	PTR	worker-2.kni1.schmaustech.com.
