@@ -8,4 +8,4 @@ sudo restorecon -RFv /etc/named.conf
 sudo cp ./named/0.20.10.in-addr.arpa /var/named
 sudo cp ./named/schmaustech.com.zone /var/named
 sudo systemctl enable named --now
-sudo echo "nameserver 10.20.0.5" > /etc/resolv.conf
+echo "nameserver 10.20.0.5"|sudo tee -a /etc/resolv.conf
