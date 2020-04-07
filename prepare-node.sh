@@ -53,6 +53,6 @@ sed -i -e 's/^/  /' $HOME/domain.crt
 echo "additionalTrustBundle: |" >> $HOME/install-config.yaml
 cat $HOME/domain.crt >> $HOME/install-config.yaml
 
-ssh-keygen -t rsa -N ''
+ssh-keygen -t rsa -q -f "$HOME/.ssh/id_rsa" -N ""
 SSHKEY=$HOME/.ssh/id_rsa.pub
 sed -i "s/SSH_KEY/$(sed 's:/:\\/:g' $SSHKEY)/" $HOME/install-config.yaml
