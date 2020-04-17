@@ -1,4 +1,6 @@
 #!/bin/bash
+${OSP_PROJECT:=0}
+${GUID:=schmaustech}
 sudo cp ./dhcp/dhcpd.conf /etc/dhcp/dhcpd.conf
 sudo systemctl enable dhcpd --now
 sudo cp ./named/named.conf /etc/named.conf
@@ -9,3 +11,5 @@ sudo cp ./named/0.20.10.in-addr.arpa /var/named
 sudo cp ./named/schmaustech.com.zone /var/named
 sudo systemctl enable named --now
 echo "nameserver 10.20.0.5"|sudo tee -a /etc/resolv.conf
+openstack --os-cloud=$OSP_PROJECT subnet unset --dns-nameserver 8.8.8.8 $GUID-appnet-subnet
+openstack --os-cloud=$OSP_PROJECT subnet set --dns-nameserver 10.20.0.5 $GUID-appnet-subnet
