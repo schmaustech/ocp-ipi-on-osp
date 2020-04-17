@@ -1,6 +1,6 @@
 #!/bin/bash
 # Register subscriptions
-${POOL:=0}
+: ${POOL:=0}
 sudo subscription-manager register
 sudo subscription-manager attach --pool=$POOL
 sudo subscription-manager repos --disable=*
