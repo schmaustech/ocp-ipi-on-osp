@@ -2,7 +2,7 @@
 # Generate oc & openshift-baremetal-install binary
 # Build registry & rhcos caching httpd
 
-export VERSION=4.3.10
+export VERSION=4.3.12
 export RELEASE_IMAGE=$(curl -s https://mirror.openshift.com/pub/openshift-v4/clients/ocp/$VERSION/release.txt| grep 'Pull From: quay.io' | awk -F ' ' '{print $3}' | xargs)
 
 export PATH=$PATH:/home/cloud-user
