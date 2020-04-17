@@ -1,6 +1,6 @@
 #!/bin/bash
-${OSP_PROJECT:=0}
-${GUID:=schmaustech}
+: ${OSP_PROJECT:=0}
+: ${GUID:=schmaustech}
 sudo cp ./dhcp/dhcpd.conf /etc/dhcp/dhcpd.conf
 sudo systemctl enable dhcpd --now
 sudo cp ./named/named.conf /etc/named.conf
