@@ -1,6 +1,6 @@
 #!/bin/bash
 # Deploy Cluster
-export VERSION="4.3.8"
+export VERSION="4.3.12"
 export OPENSHIFT_RELEASE_IMAGE="registry.svc.ci.openshift.org/ocp/release:$VERSION"
 export LOCAL_REG='provision.schmaustech.com:5000'
 export export LOCAL_REPO='ocp4/openshift4'
