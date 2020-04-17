@@ -1,5 +1,5 @@
 #!/bin/bash
-export OSP_PROJECT=smoketes-7df4-project
+${OSP_PROJECT:=0}
 for NODE in $( openstack --os-cloud=$OSP_PROJECT server list|egrep "worker|master"|cut -d\| -f3|sed 's/ //g' )
 do
  NAME=$(echo $NODE|sed 's/.$//')
