@@ -23,4 +23,5 @@ echo "cleanup-refresh : Turning off nodes..."
 /usr/bin/ipmitool -I lanplus -H10.20.0.3 -p6203 -Uadmin -Predhat chassis power off
 /usr/bin/ipmitool -I lanplus -H10.20.0.3 -p6204 -Uadmin -Predhat chassis power off
 /usr/bin/ipmitool -I lanplus -H10.20.0.3 -p6205 -Uadmin -Predhat chassis power off
+sudo  ip -s -s neigh flush all
 echo "cleanup-refresh : Completed cleanup!"
