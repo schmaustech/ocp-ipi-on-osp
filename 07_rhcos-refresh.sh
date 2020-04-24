@@ -3,7 +3,7 @@
 # Pull updated rhcos image if needed							#
 #########################################################################################
 echo "rhcos-refresh : Begin RHCOS refresh..."
-OPENSHIFT_INSTALLER=/`pwd`/openshift-baremetal-install
+OPENSHIFT_INSTALLER=`pwd`/openshift-baremetal-install
 IRONIC_DATA_DIR=/opt/ocp/ironic
 OPENSHIFT_INSTALL_COMMIT=$($OPENSHIFT_INSTALLER version | grep commit | cut -d' ' -f4)
 OPENSHIFT_INSTALLER_MACHINE_OS=${OPENSHIFT_INSTALLER_MACHINE_OS:-https://raw.githubusercontent.com/openshift/installer/$OPENSHIFT_INSTALL_COMMIT/data/data/rhcos.json}
@@ -59,7 +59,7 @@ echo "RHCOS_QEMU_IMAGE=$MACHINE_OS_BOOTSTRAP_IMAGE_NAME?sha256=$MACHINE_OS_INSTA
 RHCOS_QEMU_IMAGE=$MACHINE_OS_BOOTSTRAP_IMAGE_NAME?sha256=$MACHINE_OS_INSTALLER_BOOTSTRAP_IMAGE_UNCOMPRESSED_SHA256
 echo "RHCOS_OPENSTACK_IMAGE=$MACHINE_OS_IMAGE_NAME?sha256=$MACHINE_OS_IMAGE_SHA256"
 RHCOS_OPENSTACK_IMAGE=$MACHINE_OS_IMAGE_NAME?sha256=$MACHINE_OS_IMAGE_SHA256
-sed -i "s/RHCOS_QEMU_IMAGE/$RHCOS_QEMU_IMAGE/g" $HOME/install-config.yaml
-sed -i "s/RHCOS_OPENSTACK_IMAGE/$RHCOS_OPENSTACK_IMAGE/g" $HOME/install-config.yaml
-sed -i "s/RHCOS_OPENSTACK_IMAGE/$RHCOS_OPENSTACK_IMAGE/g" $HOME/metal3-config.yaml
+sed -i "s/RHCOS_QEMU_IMAGE/$RHCOS_QEMU_IMAGE/g" `pwd`/install-config.yaml
+sed -i "s/RHCOS_OPENSTACK_IMAGE/$RHCOS_OPENSTACK_IMAGE/g" `pwd`/install-config.yaml
+sed -i "s/RHCOS_OPENSTACK_IMAGE/$RHCOS_OPENSTACK_IMAGE/g" `pwd`/metal3-config.yaml
 echo "rhcos-refresh : Completed RHCOS refresh..."
