@@ -5,10 +5,10 @@
 export VERSION=4.3.12
 export RELEASE_IMAGE=$(curl -s https://mirror.openshift.com/pub/openshift-v4/clients/ocp/$VERSION/release.txt| grep 'Pull From: quay.io' | awk -F ' ' '{print $3}' | xargs)
 
-export PATH=$PATH:/home/cloud-user
+export PATH=$PATH:/home/cloud-user:`pwd`
 export CMD=openshift-baremetal-install
 export EXTRACT_DIR=$(pwd)
-export PULLSECRET=/home/cloud-user/pull-secret.json
+export PULLSECRET=`pwd`/pull-secret.json
 
 curl -s https://mirror.openshift.com/pub/openshift-v4/clients/ocp/$VERSION/openshift-client-linux-$VERSION.tar.gz | tar zxvf - oc
 sudo cp oc /usr/local/bin/
@@ -17,8 +17,8 @@ oc adm release extract --registry-config "${PULLSECRET}" --command=$CMD --to "${
 sudo yum -y install podman httpd httpd-tools
 sudo mkdir -p /opt/registry/{auth,certs,data}
 sudo openssl req -newkey rsa:4096 -nodes -sha256 -keyout /opt/registry/certs/domain.key -x509 -days 365 -out /opt/registry/certs/domain.crt -subj "/C=US/ST=NorthCarolina/L=Raleigh/O=Red Hat/OU=Marketing/CN=provision.schmaustech.com"
-sudo cp /opt/registry/certs/domain.crt /home/cloud-user/domain.crt
-sudo chown cloud-user:cloud-user /home/cloud-user/domain.crt
+sudo cp /opt/registry/certs/domain.crt `pwd`/domain.crt
+sudo chown cloud-user:cloud-user `pwd`/domain.crt
 sudo cp /opt/registry/certs/domain.crt /etc/pki/ca-trust/source/anchors/
 sudo update-ca-trust extract
 
@@ -45,15 +45,15 @@ sudo podman ps
 sleep 10
 
 export UPSTREAM_REPO="registry.svc.ci.openshift.org/ocp/release:$VERSION"
-export PULLSECRET=/home/cloud-user/pull-secret.json
+export PULLSECRET=`pwd`/pull-secret.json
 export LOCAL_REG='provision.schmaustech.com:5000'
 export LOCAL_REPO='ocp4/openshift4'
 oc adm release mirror -a $PULLSECRET --from=$UPSTREAM_REPO --to-release-image=$LOCAL_REG/$LOCAL_REPO:$VERSION --to=$LOCAL_REG/$LOCAL_REPO
 
-sed -i -e 's/^/  /' $HOME/domain.crt
-echo "additionalTrustBundle: |" >> $HOME/install-config.yaml
-cat $HOME/domain.crt >> $HOME/install-config.yaml
+sed -i -e 's/^/  /' `pwd`/domain.crt
+echo "additionalTrustBundle: |" >> `pwd`/install-config.yaml
+cat $HOME/domain.crt >> `pwd`/install-config.yaml
 
 ssh-keygen -t rsa -q -f "$HOME/.ssh/id_rsa" -N ""
 SSHKEY=$HOME/.ssh/id_rsa.pub
-sed -i "s/SSH_KEY/$(sed 's:/:\\/:g' $SSHKEY)/" $HOME/install-config.yaml
+sed -i "s/SSH_KEY/$(sed 's:/:\\/:g' $SSHKEY)/" `pwd`/install-config.yaml
