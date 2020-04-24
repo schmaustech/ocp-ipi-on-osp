@@ -11,6 +11,7 @@ export EXTRACT_DIR=$(pwd)
 export PULLSECRET=/home/cloud-user/pull-secret.json
 
 curl -s https://mirror.openshift.com/pub/openshift-v4/clients/ocp/$VERSION/openshift-client-linux-$VERSION.tar.gz | tar zxvf - oc
+sudo cp oc /usr/loca/bin/
 oc adm release extract --registry-config "${PULLSECRET}" --command=$CMD --to "${EXTRACT_DIR}" ${RELEASE_IMAGE}
 
 sudo yum -y install podman httpd httpd-tools
