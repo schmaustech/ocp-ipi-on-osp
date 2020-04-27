@@ -5,7 +5,7 @@ metadata:
   namespace: openshift-machine-api
 data:
   http_port: "6180"
-  provisioning_interface: "eth1"
+  provisioning_interface: "ens3"
   provisioning_ip: "172.22.0.3/24"
   dhcp_range: "172.22.0.10,172.22.0.100"
   deploy_kernel_url: "http://172.22.0.3:6180/images/ironic-python-agent.kernel"
