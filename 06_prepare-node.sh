@@ -8,7 +8,7 @@ export RELEASE_IMAGE=$(curl -s https://mirror.openshift.com/pub/openshift-v4/cli
 export PATH=$PATH:/home/cloud-user:`pwd`
 export CMD=openshift-baremetal-install
 export EXTRACT_DIR=$(pwd)
-export PULLSECRET=`pwd`/pull-secret.json
+export PULLSECRET=/home/cloud-user/pull-secret.json
 
 curl -s https://mirror.openshift.com/pub/openshift-v4/clients/ocp/$VERSION/openshift-client-linux-$VERSION.tar.gz | tar zxvf - oc
 sudo cp oc /usr/local/bin/
@@ -45,7 +45,7 @@ sudo podman ps
 sleep 10
 
 export UPSTREAM_REPO="registry.svc.ci.openshift.org/ocp/release:$VERSION"
-export PULLSECRET=`pwd`/pull-secret.json
+export PULLSECRET=/home/cloud-user/pull-secret.json
 export LOCAL_REG='provision.schmaustech.com:5000'
 export LOCAL_REPO='ocp4/openshift4'
 oc adm release mirror -a $PULLSECRET --from=$UPSTREAM_REPO --to-release-image=$LOCAL_REG/$LOCAL_REPO:$VERSION --to=$LOCAL_REG/$LOCAL_REPO
