@@ -16,7 +16,7 @@ controlPlane:
 platform:
   baremetal:
     provisioningNetworkCIDR: 172.22.0.0/24
-    provisioningNetworkInterface: eth0
+    provisioningNetworkInterface: ens3
     apiVIP: 10.20.0.110
     ingressVIP: 10.20.0.112
     dnsVIP: 10.20.0.111
