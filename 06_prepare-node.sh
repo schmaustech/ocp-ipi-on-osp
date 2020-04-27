@@ -52,7 +52,7 @@ oc adm release mirror -a $PULLSECRET --from=$UPSTREAM_REPO --to-release-image=$L
 
 sed -i -e 's/^/  /' `pwd`/domain.crt
 echo "additionalTrustBundle: |" >> `pwd`/install-config.yaml
-cat $HOME/domain.crt >> `pwd`/install-config.yaml
+cat `pwd`/domain.crt >> `pwd`/install-config.yaml
 
 ssh-keygen -t rsa -q -f "$HOME/.ssh/id_rsa" -N ""
 SSHKEY=$HOME/.ssh/id_rsa.pub
