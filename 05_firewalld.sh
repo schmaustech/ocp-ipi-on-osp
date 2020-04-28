@@ -8,3 +8,4 @@ sudo firewall-cmd --add-service=http  --permanent
 sudo firewall-cmd --add-port=5000/tcp  --permanent
 sudo firewall-cmd --add-service=dhcp  --permanent
 sudo firewall-cmd --reload
+sudo systemctl restart dhcpd
