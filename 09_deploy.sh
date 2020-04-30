@@ -8,6 +8,10 @@ export OPENSHIFT_INSTALL_RELEASE_IMAGE_OVERRIDE=${LOCAL_REG}/${LOCAL_REPO}:${VER
 
 mkdir `pwd`/ocp
 cp `pwd`/install-config.yaml `pwd`/ocp
-`pwd`/openshift-baremetal-install --dir=ocp create manifests
-cp `pwd`/metal3-config.yaml `pwd`/ocp/openshift/99_metal3-config.yaml
+case $VERSION in
+  4.3*) `pwd`/openshift-baremetal-install --dir=ocp create manifests
+        cp `pwd`/metal3-config.yaml `pwd`/ocp/openshift/99_metal3-config.yaml
+        ;;
+     *) ;;
+esac
 `pwd`/openshift-baremetal-install --dir=ocp --log-level debug create cluster
