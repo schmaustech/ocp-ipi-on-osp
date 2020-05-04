@@ -59,10 +59,10 @@ export LOCAL_REG='provision.schmaustech.com:5000'
 export LOCAL_REPO='ocp4/openshift4'
 oc adm release mirror -a $PULLSECRET --from=$UPSTREAM_REPO --to-release-image=$LOCAL_REG/$LOCAL_REPO:$VERSION --to=$LOCAL_REG/$LOCAL_REPO
 
-sed -i -e 's/^/  /' $(pwd)/domain.crt
-echo "additionalTrustBundle: |" >> $(pwd)/install-config.yaml
-cat $(pwd)/domain.crt >> $(pwd)/install-config.yaml
+sed -i -e 's/^/  /' $HOME/domain.crt
+echo "additionalTrustBundle: |" >> `pwd`/install-config.yaml
+cat $HOME/domain.crt >> `pwd`/install-config.yaml
 
 ssh-keygen -t rsa -q -f "$HOME/.ssh/id_rsa" -N ""
 SSHKEY=$HOME/.ssh/id_rsa.pub
-sed -i "s/SSH_KEY/$(sed 's:/:\\/:g' $SSHKEY)/" $(pwd)/install-config.yaml
+sed -i "s/SSH_KEY/$(sed 's:/:\\/:g' $SSHKEY)/g" `pwd`/install-config.yaml
