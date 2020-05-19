@@ -1,7 +1,7 @@
 #!/bin/bash
 # Generate oc & openshift-baremetal-install binary
 # Build registry & rhcos caching httpd
-
+cp $(pwd)/install-config.yaml install-config.yaml.orig
 export VERSION=4.3.12
 case $VERSION in
   *nightly*) export RELEASE_IMAGE=$(curl -s https://mirror.openshift.com/pub/openshift-v4/clients/ocp-dev-preview/$VERSION/release.txt| grep 'Pull From: quay.io' | awk -F ' ' '{print $3}' | xargs) ;;
@@ -63,6 +63,6 @@ sed -i -e 's/^/  /' $(pwd)/domain.crt
 echo "additionalTrustBundle: |" >> $(pwd)/install-config.yaml
 cat $(pwd)/domain.crt >> $(pwd)/install-config.yaml
 
-ssh-keygen -t rsa -q -f "$HOME/.ssh/id_rsa" -N ""
+echo -e 'y\n'|ssh-keygen -t rsa -q -f "$HOME/.ssh/id_rsa" -N ""
 SSHKEY=$HOME/.ssh/id_rsa.pub
 sed -i "s/SSH_KEY/$(sed 's:/:\\/:g' $SSHKEY)/g" `pwd`/install-config.yaml
